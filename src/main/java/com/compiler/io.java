@@ -2,17 +2,16 @@ package com.compiler;
 import java.io.*;
 
 
-public class linker {
+public class io {
 
-    public String file_path="./file/";
-    public String read_content="";
-    public String filename;
-    public String content;
-    /**
-     * 
-     * @param file 檔案名字
-     */
-    public linker()
+    public String file_path="./file/"; // 檔案位置
+    public String read_content=""; //讀取的內容
+    public String filename; // 檔名
+    public String content;  //要寫入的內容
+    public String get_path ="";
+
+
+    public io()
     {
     }
     public void Reader_ ()
@@ -60,9 +59,9 @@ public class linker {
     public void File_maker()
     {
         File fileDir = new File(file_path);
-        if(!fileDir.isDirectory())
+        if( !fileDir.isDirectory() )
         {
-            fileDir.mkdir();
+            fileDir.mkdir();//建立資料夾
         }
         File file =new File(fileDir, filename);
         if(!file.isFile())
@@ -76,5 +75,6 @@ public class linker {
                 e.printStackTrace();
             }
         }
+        get_path =file.getPath();
     }
 }
