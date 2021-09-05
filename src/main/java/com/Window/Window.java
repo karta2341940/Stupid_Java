@@ -1,9 +1,9 @@
 package com.Window;
-import java.awt.Frame;
+import javax.swing.*;
 import com.Window.EventHandler.*;
 
 
-public class Window extends Frame { // 讓Window繼承Frame
+public class Window extends JFrame { // 讓Window繼承Frame
     
     public Window()
     {
