@@ -10,13 +10,14 @@ public class compiler
 		System.out.println("Current Working Directory is = " +directoryName);
         /*
         */
-        linker link = new linker();
+        io link = new io();
         link.filename="Test1.txt";
         link.File_maker();
         link.Reader_();
-        link.content="Hello \n th   is is a test2 txt \nworld";
+        link.content="Hello world";
         link.Writer_();
         link.Reader_();
+        System.out.println(link.get_path);
         
     }
 }
