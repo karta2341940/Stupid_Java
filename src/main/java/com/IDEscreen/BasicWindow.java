@@ -55,7 +55,12 @@ public class BasicWindow extends JFrame
         this.up.add(btns);
 
 
-
-
+/* 
+        
+        JPanel pLeft = new JPanel();
+        pLeft.setBackground(Color.YELLOW);
+        pLeft.setBounds(100, 100, 200, 200);
+        this.add(pLeft);
+*/
     }
 }

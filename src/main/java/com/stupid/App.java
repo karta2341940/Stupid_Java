@@ -3,7 +3,13 @@ import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.IDEscreen.*;
 import com.Window.*;
+import com.compiler.*;
+//import com.Window.*;
 
+import javax.swing.UIManager;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.menu.menu;
+import com.IDEscreen.*;
 /**
  * Hello world!
  */
@@ -25,5 +31,17 @@ public final class App {
         //new Window(); // new 出Windows(已經繼承了Frame)
         new Q1();
         //new Q2();
+        new compiler();
+        /*
+        System.out.println("Hello World!");
+        new Window(); // new 出Windows(已經繼承了Frame)
+        */
+    
+        UIManager.put( "Button.arc" , 10 );
+        System.out.println("Hello World!");
+
+        //new Window(); // new 出Windows(已經繼承了Frame)
+        new menu();
+        new test();
     }
 }
