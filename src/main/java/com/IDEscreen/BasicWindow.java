@@ -28,7 +28,7 @@ public class BasicWindow extends JFrame
 
         lefts = new JPanel();
         lefts.setBackground(Color.gray);
-        lefts.setBounds(0,56,195,620);
+        lefts.setBounds(0,56,195,621);
     
         middle = new JPanel();
         middle.setBackground(Color.gray);
