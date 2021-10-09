@@ -85,86 +85,86 @@ public class puzzle {
                 
                 break;
                 
-                case "60":
+                case "60":  //else
                 
-                outString[Head.y]+= "else{" ;
-                outString[Tail.y]+= "}" ;
+                outString[target[b].Head.y]+= "else{" ;
+                outString[target[b].Tail.y]+= "}" ;
                 break;
                 
-                case "70":
+                case "70":  //else if
                 
-                outString[Head.y] += "else if(" + Content + "){" ;
-                outString[Tail.y] += "}" ;
+                outString[target[b].Head.y] += "else if(" + Content + "){" ;
+                outString[target[b].Tail.y] += "}" ;
                 break;
                 
-                case "80":
+                case "80":  //switch
                 
                 switch(funCode[1])
                 {
-                    case "0" :
-                    outString[Head.y] += "switch(" + Content + "){" ;
-                    outString[Tail.y] += "}" ;
+                    case "0" :  // switch本體
+                    outString[target[b].Head.y] += "switch(" + Content + "){" ;
+                    outString[target[b].Tail.y] += "}" ;
                     break;
 
-                    case "1" :
-                    outString[Head.y] += "case(" + Content + ")" ;
-                    outString[Tail.y] += "break;" ;
+                    case "1" :  // cace(含break)
+                    outString[target[b].Head.y] += "case(" + Content + ")" ;
+                    outString[target[b].Tail.y] += "break;" ;
                     break;
 
-                    case "2":
-                    outString[Head.y] += "default:" + Content + "){" ;
-                    outString[Tail.y] += "break;" ;
+                    case "2":  // default(含break)
+                    outString[target[b].Head.y] += "default:" + Content + "){" ;
+                    outString[target[b].Tail.y] += "break;" ;
                     break;
                 }
 
-                case "90":
+                case "90":  //  while
                 
-                outString[Head.y] += "while(" + Content + "){" ;
-                outString[Tail.y] += "}" ;
+                outString[target[b].Head.y] += "while(" + Content + "){" ;
+                outString[target[b].Tail.y] += "}" ;
                 break;
                 
-                case "11":
+                case "11":  //  new (__=new __;)
                 
-                outString[Head.y] += Content + "=new" + Content + ";" ;
+                outString[target[b].Head.y] += Content + "=new" + Content + ";" ;
                 break;
 
-                case "12":
+                case "12":  // 變數
                 switch(funCode[1])
                 {
-                    case "1":
-                    outString[Head.y] += "byte" +  Content + ";";
+                    case "1":  // byte
+                    outString[target[b].Head.y] += "byte" +  Content + ";";
                     break;
                     
-                    case "2":
-                    outString[Head.y] += "short" +  Content + ";";
+                    case "2":  // short
+                    outString[target[b].Head.y] += "short" +  Content + ";";
                     break;
 
-                    case "3":
-                    outString[Head.y] += "int" +  Content + ";";
+                    case "3":  //  int
+                    outString[target[b].Head.y] += "int" +  Content + ";";
                     break;
 
-                    case "4":
-                    outString[Head.y] += "long" +  Content + ";";
+                    case "4":  //  long
+                    outString[target[b].Head.y] += "long" +  Content + ";";
                     break;
 
-                    case "5":
-                    outString[Head.y] += "float" +  Content + ";";
+                    case "5":  //  float
+                    outString[target[b].Head.y] += "float" +  Content + ";";
                     break;
                     
-                    case "6":
-                    outString[Head.y] += "double" +  Content + ";";
+                    case "6":  //  double
+                    outString[target[b].Head.y] += "double" +  Content + ";";
                     break;
 
-                    case "7":
-                    outString[Head.y] += "char" +  Content + ";";
+                    case "7":  //  char
+                    outString[target[b].Head.y] += "char" +  Content + ";";
                     break;
 
-                    case "8":
-                    outString[Head.y] += "boolean" +  Content + ";";
+                    case "8":  //  boolean
+                    outString[target[b].Head.y] += "boolean" +  Content + ";";
                     break;
 
-                    case "9":
-                    outString[Head.y] += "String" +  Content + ";";
+                    case "9":  //  String
+                    outString[target[b].Head.y] += "String" +  Content + ";";
                     break;
                 }
                 break;
