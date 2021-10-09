@@ -29,20 +29,20 @@ public class puzzle {
      * else     =>      600
      * else if  =>      700
      * switch   =>      800
-     * case     =>      801
-     * default  =>      802
+     * case     =>        1
+     * default  =>        2
      * while    =>      900
      * new      =>      110 
      * 變數     =>      120
-     * byte     =>      121
-     * short    =>      122
-     * int      =>      123
-     * long     =>      124
-     * float    =>      125
-     * double   =>      126
-     * char     =>      127
-     * boolean  =>      128
-     * String   =>      129 
+     * byte     =>        1
+     * short    =>        2
+     * int      =>        3
+     * long     =>        4
+     * float    =>        5
+     * double   =>        6
+     * char     =>        7
+     * boolean  =>        8
+     * String   =>        9 
      */
     public void readLineNumber(puzzle[] target)
     {
@@ -56,6 +56,7 @@ public class puzzle {
         int b = 0;
         while( b < target.length)
         {
+            String[] funCode = target[b].functionCode.split(".");
             switch(target[b].functionCode.substring(0,1))
             {
                 case "00"://字串拼圖
@@ -98,7 +99,7 @@ public class puzzle {
                 
                 case "80":
                 
-                switch(target[b].functionCode.substring(2))
+                switch(funCode[1])
                 {
                     case "0" :
                     outString[Head.y] += "switch(" + Content + "){" ;
@@ -128,7 +129,7 @@ public class puzzle {
                 break;
 
                 case "12":
-                switch(target[b].functionCode.substring(2))
+                switch(funCode[1])
                 {
                     case "1":
                     outString[Head.y] += "byte" +  Content + ";";
@@ -166,7 +167,6 @@ public class puzzle {
                     outString[Head.y] += "String" +  Content + ";";
                     break;
                 }
-                
                 break;
             }
             b++;
