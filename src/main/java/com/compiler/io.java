@@ -10,7 +10,7 @@ public class io {
     public String content;  //要寫入的內容
     public String get_path ="";
 
-
+    
     public io()
     {
     }
@@ -40,6 +40,7 @@ public class io {
 
     public void Writer_()
     {
+        
         try 
         {
             FileWriter fWriter = new FileWriter(file_path + filename);
