@@ -28,19 +28,19 @@ public class BasicWindow extends JFrame
 
         lefts = new JPanel();
         lefts.setBackground(Color.gray);
-        lefts.setBounds(0,50,200,720);
+        lefts.setBounds(0,56,195,621);
     
         middle = new JPanel();
-        middle.setBackground(Color.black);
-        middle.setBounds(200,50,600,480);
+        middle.setBackground(Color.gray);
+        middle.setBounds(200,56,595,480);
         
         right = new JPanel();
-        right.setBackground(Color.blue);
-        right.setBounds(800,50,500,480);
+        right.setBackground(Color.gray);
+        right.setBounds(800,56,460,480);
 
         down = new JPanel();
-        down.setBackground(Color.green);
-        down.setBounds(200,500,1230,200);
+        down.setBackground(Color.gray);
+        down.setBounds(200,545,1060,132);
 
 
         btns = new JButton("implement");
