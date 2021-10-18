@@ -2,14 +2,10 @@ package com.stupid;
 import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.IDEscreen.*;
-import com.Window.*;
 import com.compiler.*;
 //import com.Window.*;
 
-import javax.swing.UIManager;
-import com.formdev.flatlaf.FlatDarkLaf;
 import com.menu.menu;
-import com.IDEscreen.*;
 /**
  * Hello world!
  */

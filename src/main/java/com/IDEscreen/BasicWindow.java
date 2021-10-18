@@ -1,7 +1,6 @@
 package com.IDEscreen;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class BasicWindow extends JFrame
 {
@@ -11,10 +10,16 @@ public class BasicWindow extends JFrame
     private JPanel middle;
     private JPanel down;
     public JButton btns;
+
+    ImageIcon image = new ImageIcon("smile.png");
+    final int WIDTH = image.getIconWidth();
+    final int HEIGHT = image.getIconHeight();
+    Point imageCorner;
+    Point prevPt;
     
     public BasicWindow()
     {
-        this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setSize(1280, 720);
         this.setLocationRelativeTo(null);
@@ -45,6 +50,7 @@ public class BasicWindow extends JFrame
 
         btns = new JButton("implement");
         
+        DragPanel dragPanel = new DragPanel();
 
         this.add(up);
         this.add(lefts);
@@ -53,7 +59,7 @@ public class BasicWindow extends JFrame
         this.add(down);
 
         this.up.add(btns);
-
+        this.lefts.add(dragPanel);
 
 /* 
         
