@@ -37,7 +37,9 @@ public class io {
             e.printStackTrace();
         }
     }
-
+    /**
+     * 
+     */
     public void Writer_()
     {
         
@@ -57,6 +59,7 @@ public class io {
     {
         System.out.println(read_content);
     }
+    
     public void File_maker()
     {
         File fileDir = new File(file_path);
