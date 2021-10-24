@@ -166,8 +166,5 @@ public class puzzleStructure {
      * <li>函數需有void的型態
      */
     public String varType;
-    /**
-     * 
-     */
     
 }
