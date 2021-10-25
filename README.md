@@ -1,4 +1,4 @@
 # Stupid_Java
-kmkjnj
+This is a Java Project that names Stupid Java 
 
-karta hi
+Why this Project names Stupid ?Because all of software calls smart in it's name are very stuipd
