@@ -4,17 +4,17 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class DragPanel extends JPanel{
- 
- ImageIcon image = new ImageIcon("src\\main\\java\\com\\IDEscreen\\smile.png");
- final int WIDTH = image.getIconWidth();
- final int HEIGHT = image.getIconHeight();
- Point imageCorner;
- Point prevPt;
+
+  ImageIcon image = new ImageIcon("src\\main\\java\\com\\IDEscreen\\smile.png");
+  final int WIDTH = image.getIconWidth();
+  final int HEIGHT = image.getIconHeight();
+  Point imageCorner;
+  Point prevPt;
  
  DragPanel(){
   
-  setPreferredSize(new Dimension(190, 190));
-  imageCorner = new Point(0,0);
+  //setPreferredSize(new Dimension(190, 190));
+  imageCorner = new Point(20,20);
   ClickListener clickListener = new ClickListener();
   DragListener dragListener = new DragListener();
   this.addMouseListener(clickListener);

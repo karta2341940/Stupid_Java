@@ -1,21 +1,22 @@
 package com.IDEscreen;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class BasicWindow extends JFrame
 {
     private JPanel lefts;
     private JPanel up;
     private JPanel right;
-    private JPanel middle;
+    public JPanel middle;
     private JPanel down;
     public JButton btns;
 
-    ImageIcon image = new ImageIcon("smile.png");
+    /*ImageIcon image = new ImageIcon("smile.png");
     final int WIDTH = image.getIconWidth();
     final int HEIGHT = image.getIconHeight();
     Point imageCorner;
-    Point prevPt;
+    Point prevPt;*/
     
     public BasicWindow()
     {
@@ -34,11 +35,25 @@ public class BasicWindow extends JFrame
         lefts = new JPanel();
         lefts.setBackground(Color.gray);
         lefts.setBounds(0,56,195,621);
-    
+        ImageIcon icon = new ImageIcon("src\\main\\java\\com\\IDEscreen\\smile.png");
+        JButton iconbutton = new JButton(icon);
+        this.lefts.add(iconbutton);
+        iconbutton.addActionListener
+                (
+                    new ActionListener()
+                    {
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            middle.add(iconbutton);
+                        }
+                    }
+                );
+
         middle = new JPanel();
         middle.setBackground(Color.gray);
         middle.setBounds(200,56,595,480);
         
+
         right = new JPanel();
         right.setBackground(Color.gray);
         right.setBounds(800,56,460,480);
@@ -50,7 +65,7 @@ public class BasicWindow extends JFrame
 
         btns = new JButton("implement");
         
-        DragPanel dragPanel = new DragPanel();
+        //DragPanel dragPanel = new DragPanel();
 
         this.add(up);
         this.add(lefts);
@@ -59,7 +74,7 @@ public class BasicWindow extends JFrame
         this.add(down);
 
         this.up.add(btns);
-        this.lefts.add(dragPanel);
+        //this.lefts.add(dragPanel);
 
 /* 
         
