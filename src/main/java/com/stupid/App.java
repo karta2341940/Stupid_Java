@@ -38,6 +38,6 @@ public final class App {
 
         //new Window(); // new 出Windows(已經繼承了Frame)
         new menu();
-        new Q1();
+        //new Q1();
     }
 }

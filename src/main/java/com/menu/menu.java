@@ -1,4 +1,5 @@
 package com.menu;
+import com.IDEscreen.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -53,6 +54,18 @@ public class menu extends JFrame{
                         public void actionPerformed(ActionEvent e)
                         {
                             System.out.println(((JButton) e.getSource()).getText());
+                            switch(((JButton) e.getSource()).getText())
+                            {
+                                case "1":
+                                    new Q1();
+                                    break;
+                                case "2":
+                                    new Q2();
+                                    break;
+                                case "3":
+                                    new Q3();
+                                    break;
+                            }
                         }
                     }
                 );
