@@ -49,14 +49,14 @@ public class BasicWindow extends JFrame
                     }
                 );
 
-        middle = new JPanel();
+        middle = new MovePanel();
         middle.setBackground(Color.gray);
-        middle.setBounds(200,56,595,480);
+        //middle.setBounds(200,56,595,480);
         
 
         right = new JPanel();
         right.setBackground(Color.gray);
-        right.setBounds(800,56,460,480);
+        //right.setBounds(800,56,460,480);
 
         down = new JPanel();
         down.setBackground(Color.gray);
