@@ -80,6 +80,7 @@
           <skip>${skipTests}</skip>
         </configuration>
         <executions>
+<!--
           <execution>
             <?m2e execute onConfiguration?>
             <id>checkstyle</id>
@@ -88,6 +89,7 @@
               <goal>check</goal>
             </goals>
           </execution>
+        -->
         </executions>
       </plugin>
       <plugin>

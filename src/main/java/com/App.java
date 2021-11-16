@@ -4,6 +4,7 @@ import com.structure.position;
 //import com.Window.*;
 import com.structure.puzzle;
 import com.structure.puzzleStructure;
+import com.structure.test;
 
 /**
  * Hello world!
@@ -25,6 +26,7 @@ public final class App {
         {
             puz[i] = new puzzleStructure();
         }
+        /*
         puz[0].set("30.1", 
         new position(1,1), 
         new position(1, 10), 
@@ -36,7 +38,8 @@ public final class App {
         new position(0, 11), 
         "",
         "shlu");
-
+        */
+        puz=new test().get();
         puzzle.generation(puz);
         /*
         compiler abc=new compiler();

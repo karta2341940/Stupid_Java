@@ -71,13 +71,14 @@ public class puzzleStructure {
      * <li>function     =>30
      * <li>function指令結構 =>
      * <ul>
-     * <li>30.保護層級(註1)
+     * <li>30.保護層級(註1).static與否(註2)
      * <li>註1:保護層級:
      * <ul>
      * <li>public => 30.1
      * <li>private => 30.2
      * <li>protect =>30.3
      * </ul>
+     * <li>註2:如果為1則有為static ,否則0
      * <li><p>註2:</p><ul><li><p>需自行填入函數回傳值型態至varType</p>
      * <p>以及函數名稱至varName</p><ul>
      * </ul>

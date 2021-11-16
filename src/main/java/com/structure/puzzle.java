@@ -9,75 +9,7 @@ public class puzzle {
     /**
      * 
      */
-    public String functionCode="";
-    /**
-     * 
-     */
-    public position Head;//紀錄頭座標
-    /**
-     * 
-     */
-    public String Content="";//if(content),字串拼圖內容,import的內容
-    /**
-     * 
-     */
-    public position Tail; //紀錄尾座標(有變動時要更新)
-    //for 變數,class,function
-    /**
-     * 
-     */
-    public String varName="";//變數，function,class共用
-    /**
-     * public   =>      1
-     * private  =>      2
-     * protect  =>      3
-     * public class =>  201
-     * 
-     * 字串拼圖 =>      00
-     * import   =>      10
-     * class    =>      20
-     * function =>      30.0.0 ( functioncode . [public,private...] . type[int,string...] )
-     * // public void exampleFunction =>30.1.a
-     *-public   =>      1
-     *-private  =>      2
-     *-protect  =>      3
-     *-default  =>      2
-
-     *---byte   =>      1
-     *---short  =>      2
-     *---int    =>      3
-     *---long   =>      4
-     *---float  =>      5
-     *---double =>      6
-     *---char   =>      7
-     *---boolean=>      8
-     *---String =>      9
-     *---void   =>      a
-
-     * for      =>      40
-     * if       =>      50
-     * 
-     * else     =>      60
-     * else if  =>      70
-     * switch   =>      80
-     * case     =>      1  (有包覆的拼圖(跟break一組))
-     * default  =>      2  (有包覆的拼圖(跟break一組))
-     * while    =>      90
-     * new      =>      11
-     * 
-     * 變數     =>      12 (如果是int a => 120.3 )
-     * byte     =>      1
-     * short    =>      2
-     * int      =>      3
-     * long     =>      4
-     * float    =>      5
-     * double   =>      6
-     * char     =>      7
-     * boolean  =>      8
-     * String   =>      9
-     * 
-     */
-
+    
     /**
      * 讀取陣列行數並產生出相對應的
      */
@@ -116,10 +48,20 @@ public class puzzle {
             {
 
                 case "00"://字串拼圖
-                    outString[target[b].Head.y]+=target[b].Content+";";
+                    if( target[b].Head.x != 0 )
+                    {
+                        for(int i = 0 ; i < target[b].Head.x ; i++)
+                        outString[target[b].Head.y]+="\t";
+                    }
+                    outString[target[b].Head.y]+=target[b].Content;
                 break;
                 
                 case "10"://import
+                    if( target[b].Head.x != 0 )
+                    {
+                        for(int i = 0 ; i < target[b].Head.x ; i++)
+                        outString[target[b].Head.y]+="\t";
+                    }
                     outString[target[b].Head.y]+="import "+target[b].Content+";";
                 break;
                 
@@ -194,6 +136,21 @@ public class puzzle {
                         default:
                             outString[target[b].Head.y]+="private ";
                         break;
+                    }
+                    try{
+
+                        switch(funCode[2])
+                        {
+                            case "1":
+                            outString[target[b].Head.y]+= "static " ;
+                            break;
+                            default:
+                            outString[target[b].Head.y]+= "" ;
+                            break;
+                        }
+                    }
+                    catch (Exception e) {
+                        show("Exception = "+e);
                     }
                     outString[target[b].Head.y]+= target[b].varType.trim() +" "+ target[b].varName.trim()+ "("+target[b].Content+")"+"{";
                     outString[target[b].Tail.y]+= "}" ;
