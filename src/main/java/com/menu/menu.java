@@ -25,7 +25,7 @@ public class menu extends JFrame{
 
         int LevelNum = 25; //共?關
         // title陣列 從1開始
-        String[] LevelTitle = {"", "a123456789", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        String[] LevelTitle = {"", "variable", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test"};
         JButton btnArray[] = new JButton[LevelNum+1];
         JLabel lblArray[] = new JLabel[LevelNum+1];
         // 新增按鈕、標籤迴圈
@@ -58,6 +58,7 @@ public class menu extends JFrame{
                             {
                                 case "1":
                                     new Q1();
+                                    new question(1);
                                     break;
                                 case "2":
                                     new Q2();
