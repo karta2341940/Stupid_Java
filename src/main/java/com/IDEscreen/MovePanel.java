@@ -13,8 +13,9 @@ public class MovePanel extends JPanel {
     private Point prevPressedPoint;
 
     MovePanel() {
-        this.setBounds(200,56,595,480);
-        LineBorder blackline = new LineBorder(Color.BLACK);
+        this.setBounds(300,300,100,100);
+        this.setBackground(Color.yellow);
+        LineBorder blackline = new LineBorder(Color.red);
         this.setBorder(blackline);
         JTextArea textarea = new JTextArea("TextArea");
         textarea.setEditable(true);
