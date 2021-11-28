@@ -3,9 +3,7 @@ package com.IDEscreen;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 

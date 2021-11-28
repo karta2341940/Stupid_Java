@@ -10,10 +10,13 @@ public class BasicWindow extends JFrame
     private JPanel right;
     public JPanel middle;
     private JPanel down;
+
     public JButton btns;
     protected String CodeStr="<html><head></head><body><p>public class HelloWorld{</p><br/><p>public static main(){</p><br/><p>System.out.println(\"Hello World\");</p><p>}<br>}</p> </body></html>";
     protected JLabel Codelbl;
     private JLabel resultlbl;
+
+    protected ImageIcon icon;
 
     /*ImageIcon image = new ImageIcon("smile.png");
     final int WIDTH = image.getIconWidth();
@@ -38,7 +41,7 @@ public class BasicWindow extends JFrame
         lefts = new JPanel();
         lefts.setBackground(Color.gray);
         lefts.setBounds(0,56,195,621);
-        ImageIcon icon = new ImageIcon("src\\main\\java\\com\\IDEscreen\\smile.png");
+        ImageIcon icon = new ImageIcon("src\\main\\java\\com\\IDEscreen\\for.png");
         JButton iconbutton = new JButton(icon);
         this.lefts.add(iconbutton);
         iconbutton.addActionListener
@@ -47,7 +50,7 @@ public class BasicWindow extends JFrame
                     {
                         public void actionPerformed(ActionEvent e)
                         {
-                            middle.add(iconbutton);
+                            middle.add(new MovePanel());
                         }
                     }
                 );
