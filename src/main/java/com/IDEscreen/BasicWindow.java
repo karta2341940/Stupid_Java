@@ -1,7 +1,9 @@
 package com.IDEscreen;
 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class BasicWindow extends JFrame
 {
@@ -18,12 +20,11 @@ public class BasicWindow extends JFrame
 
     protected ImageIcon icon;
 
-    /*ImageIcon image = new ImageIcon("smile.png");
-    final int WIDTH = image.getIconWidth();
-    final int HEIGHT = image.getIconHeight();
-    Point imageCorner;
-    Point prevPt;*/
-    
+    ArrayList<Object> puzzleAL = new ArrayList<Object>();
+
+    private String selectedStr = "";
+    private JButton tempButton = null;
+
     public BasicWindow()
     {
         this.setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
@@ -42,27 +43,58 @@ public class BasicWindow extends JFrame
         lefts.setBackground(Color.gray);
         lefts.setBounds(0,56,195,621);
         ImageIcon icon = new ImageIcon("src\\main\\java\\com\\IDEscreen\\for.png");
-        JButton iconbutton = new JButton(icon);
-        this.lefts.add(iconbutton);
-        iconbutton.addActionListener
-                (
-                    new ActionListener()
-                    {
-                        public void actionPerformed(ActionEvent e)
-                        {
-                            middle.add(new MovePanel());
-                        }
-                    }
-                );
+        JButton for_btn = new JButton(icon);
+        JButton print_btn = new JButton(icon);
+        lefts.add(for_btn);
+        lefts.add(print_btn);
+        
+        ActionListener btnlistener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                Object source = e.getSource();
+                
+                if(e.getSource()==tempButton) //是否按到重複的按鈕
+                {
+                    selectedStr = "";
+                    tempButton.setBorder(null);
+                    tempButton = null;
+                }
+                else{
+                    if(tempButton!=null) //直接切換按鈕，清除之前框框
+                        tempButton.setBorder(null);
 
-        //middle = new MovePanel();
+                    if(e.getSource()==for_btn)
+                        selectedStr = "for";
+                    else if(e.getSource()==print_btn)
+                        selectedStr = "print";
+                    
+                    tempButton = (JButton)source;
+                    tempButton.setBorder(new LineBorder(Color.red));
+                }
+            }
+        };
+        for_btn.addActionListener(btnlistener);
+        print_btn.addActionListener(btnlistener);
+        
+
         middle = new JPanel();
-        middle.add(new MovePanel());
         middle.setBounds(200,56,595,480);
         middle.setBackground(Color.gray);
         middle.setLayout(null);
-        //middle.setBounds(200,56,595,480);
-        
+        middle.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if(selectedStr != "")
+                {
+                    puzzleAL.add(new MovePanel(selectedStr, e.getPoint() )); // 新增拼圖到ArrayList  
+                    middle.add((MovePanel)puzzleAL.get(puzzleAL.size()-1));
+                    System.out.println("puzzle amount:" + puzzleAL.size());
+                    middle.revalidate();
+                    middle.repaint();
+                }
+            }
+        });
 
         right = new JPanel();
         right.setBackground(Color.gray);
@@ -79,8 +111,6 @@ public class BasicWindow extends JFrame
 
 
         btns = new JButton("implement");
-        
-        //DragPanel dragPanel = new DragPanel();
 
         this.add(up);
         this.add(lefts);
@@ -89,14 +119,5 @@ public class BasicWindow extends JFrame
         this.add(down);
 
         this.up.add(btns);
-        //this.lefts.add(dragPanel);
-
-/* 
-        
-        JPanel pLeft = new JPanel();
-        pLeft.setBackground(Color.YELLOW);
-        pLeft.setBounds(100, 100, 200, 200);
-        this.add(pLeft);
-*/
     }
 }
