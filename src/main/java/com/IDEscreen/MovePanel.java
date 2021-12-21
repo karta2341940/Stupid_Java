@@ -1,7 +1,11 @@
 package com.IDEscreen;
 
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.event.*;
+import javax.swing.border.*;
+import java.awt.geom.*;
+import java.awt.*;   
+import java.awt.event.*;
 
 public class MovePanel extends JPanel 
 {
