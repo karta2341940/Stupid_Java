@@ -23,8 +23,10 @@ public final class App {
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
 
-        new compiler();
+        //new compiler();
         UIManager.put( "Button.arc" , 10 ); // 按鈕圓角弧度
         new menu();
     }

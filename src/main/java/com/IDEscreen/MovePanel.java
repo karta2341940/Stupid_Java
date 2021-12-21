@@ -1,18 +1,17 @@
 package com.IDEscreen;
 
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.border.*;
-import java.awt.geom.*;
-import java.awt.*;   
-import java.awt.event.*;
+import java.awt.*;
 
 public class MovePanel extends JPanel 
 {
     MovePanel(String selectedStr, Point burnPoint) // 傳入選擇的拼圖與生成位置
     {
-        this.setBounds(burnPoint.x,burnPoint.y,100,100);
-        this.setBackground(Color.ORANGE);
+        this.setBounds(burnPoint.x,burnPoint.y,200,30);
+        this.setBackground(Color.white);
+        this.setLayout(new FlowLayout(0));
+        this.setBorder(new LineBorder(Color.BLACK));
         JTextArea textarea = new JTextArea("");
         JLabel jlabel = new JLabel("");
         textarea.setEditable(true);
@@ -124,6 +123,7 @@ public class MovePanel extends JPanel
         DragObjectListener listener = new DragObjectListener(); // 拖移物件監聽器
         this.addMouseListener(listener);
         this.addMouseMotionListener(listener);
+        
     }
     /*public void setSelected(boolean flag) {
         selected = flag;
