@@ -23,8 +23,8 @@ public class menu extends JFrame{
         p1.add(title);
         p2.setBackground(Color.BLACK);
 
-        int LevelNum = 25; //共?關
-        // title陣列 從1開始
+        int LevelNum = 25; //共25關
+        // title、button、label 陣列 從1開始
         String[] LevelTitle = {"", "variable", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test"};
         JButton btnArray[] = new JButton[LevelNum+1];
         JLabel lblArray[] = new JLabel[LevelNum+1];
@@ -32,29 +32,28 @@ public class menu extends JFrame{
         for(int i=0;i<(LevelNum/5)+1;i++)
         {
             p2.add(Box.createVerticalStrut(20));
-            //
             Box rowBox = Box.createHorizontalBox();
             rowBox.add(Box.createRigidArea(new Dimension(20,0))); 
             int n;
             n = (i>=LevelNum/5)?LevelNum%5:5;
             for(int j=1+i*5;j<=n+i*5;j++)
             {
-                btnArray[j] = new JButton(Integer.toString(j));
+                btnArray[j] = new JButton(Integer.toString(j)); //當前迴圈j轉成按鈕內文字
                 btnArray[j].setFont(new Font("Dialog", 1, 30)); //字型
                 btnArray[j].putClientProperty("JButton.buttonType" , "roundRect"); //外觀為圓角
                 Dimension btnSize = new Dimension(70,70);  //大小
                 btnArray[j].setMinimumSize(btnSize);
                 btnArray[j].setPreferredSize(btnSize);
                 btnArray[j].setMaximumSize(btnSize);
-                // 新增按鈕listener
-                btnArray[j].addActionListener
+                
+                btnArray[j].addActionListener// 新增按鈕listener
                 (
                     new ActionListener()
                     {
                         public void actionPerformed(ActionEvent e)
                         {
                             System.out.println(((JButton) e.getSource()).getText());
-                            switch(((JButton) e.getSource()).getText())
+                            switch(((JButton) e.getSource()).getText()) // 利用按鈕內數字打開對應關卡
                             {
                                 case "1":
                                     new Q1();
