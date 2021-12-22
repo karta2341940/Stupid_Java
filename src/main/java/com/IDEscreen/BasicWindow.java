@@ -48,8 +48,11 @@ public class BasicWindow extends JFrame
         JButton print_btn = new JButton("print");
         JButton println_btn = new JButton("println");
         JButton public_class_btn = new JButton("public class");
+        JButton public_btn = new JButton("public ");
         JButton private_class_btn = new JButton("private class");
+        JButton private_btn = new JButton("private");
         JButton protect_class_btn = new JButton("protect class");
+        JButton protect_btn = new JButton("protect");
         JButton function_btn = new JButton("function class");
         JButton public_static_void_btn = new JButton("public static void");
         JButton int_btn = new JButton("int");
@@ -68,10 +71,15 @@ public class BasicWindow extends JFrame
         JButton break_btn = new JButton("break");
         JButton while_btn = new JButton("while");
         JButton import_btn = new JButton("import");
+        JButton default_btn = new JButton("default");
+        JButton new_btn = new JButton("new");
 
         lefts.add(public_class_btn);
+        lefts.add(public_btn);
         lefts.add(private_class_btn);
+        lefts.add(private_btn);
         lefts.add(protect_class_btn);
+        lefts.add(protect_btn);
         lefts.add(function_btn);
         lefts.add(public_static_void_btn);
         lefts.add(int_btn);
@@ -93,6 +101,8 @@ public class BasicWindow extends JFrame
         lefts.add(break_btn);
         lefts.add(while_btn);
         lefts.add(import_btn);
+        lefts.add(default_btn);
+        lefts.add(new_btn);
 
         
         ActionListener btnlistener = new ActionListener() { // 按鈕監聽器
@@ -120,10 +130,16 @@ public class BasicWindow extends JFrame
                         selectedStr = "println";
                     else if(source==public_class_btn)
                         selectedStr = "public_class";
+                    else if(source==public_btn)
+                        selectedStr = "public";
                     else if(source==private_class_btn)
                         selectedStr = "private_class";
+                    else if(source==private_btn)
+                        selectedStr = "private";
                     else if(source==protect_class_btn)
-                        selectedStr = "protect_class";    
+                        selectedStr = "protect_class";
+                    else if(source==protect_btn)
+                        selectedStr = "protect";
                     else if(source==public_static_void_btn)
                         selectedStr = "public_static_void";
                     else if(source==int_btn)
@@ -158,6 +174,12 @@ public class BasicWindow extends JFrame
                         selectedStr = "while";
                     else if(source==import_btn)
                         selectedStr = "import";
+                    else if(source==function_btn)
+                        selectedStr = "fuction";
+                    else if(source==default_btn)
+                        selectedStr = "default";
+                    else if(source==new_btn)
+                        selectedStr = "new";
                     
                     tempButton = (JButton)source; // 按鈕儲存給下次點擊比對用
                 }
@@ -169,6 +191,7 @@ public class BasicWindow extends JFrame
         print_btn.addActionListener(btnlistener);
         println_btn.addActionListener(btnlistener);
         public_class_btn.addActionListener(btnlistener);
+        public_btn.addActionListener(btnlistener);
         public_static_void_btn.addActionListener(btnlistener);
         int_btn.addActionListener(btnlistener);
         _btn.addActionListener(btnlistener);
@@ -186,8 +209,13 @@ public class BasicWindow extends JFrame
         break_btn.addActionListener(btnlistener);
         while_btn.addActionListener(btnlistener);
         private_class_btn.addActionListener(btnlistener);
+        private_btn.addActionListener(btnlistener);
         protect_class_btn.addActionListener(btnlistener);
+        protect_btn.addActionListener(btnlistener);
         import_btn.addActionListener(btnlistener);
+        function_btn.addActionListener(btnlistener);
+        default_btn.addActionListener(btnlistener);
+        new_btn.addActionListener(btnlistener);
 
         middle = new JLayeredPane(); // 層級面板
         middle.setBounds(200,56,595,480);

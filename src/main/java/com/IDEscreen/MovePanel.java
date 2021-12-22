@@ -39,6 +39,11 @@ public class MovePanel extends JPanel
                 this.add(jlabel);
                 this.add(textarea);
                 break;
+            case "public":
+                jlabel.setText("public");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
             case "public_static_void":
                 jlabel.setText("public static void");
                 this.add(jlabel);
@@ -49,8 +54,18 @@ public class MovePanel extends JPanel
                 this.add(jlabel);
                 this.add(textarea);
                 break;
+            case "private":
+                jlabel.setText("private");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
             case "protect_class":
                 jlabel.setText("protect class");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
+            case "protect":
+                jlabel.setText("protect");
                 this.add(jlabel);
                 this.add(textarea);
                 break;
@@ -131,6 +146,21 @@ public class MovePanel extends JPanel
                 break;
             case "import":
                 jlabel.setText("import");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
+            case "function":
+                jlabel.setText("function");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
+            case "default":
+                jlabel.setText("default");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
+            case "new":
+                jlabel.setText("new");
                 this.add(jlabel);
                 this.add(textarea);
                 break;
