@@ -323,7 +323,7 @@ public class BasicWindow extends JFrame
         break_btn.addActionListener(btnlistener);
         while_btn.addActionListener(btnlistener);*/
     }
-
+//Push test
     protected String Question(int n) // 題目設定
     {
         String questionStr = "";
