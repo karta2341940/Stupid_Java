@@ -17,7 +17,8 @@ public class BasicWindow extends JFrame
     public JLayeredPane middle;
     private JPanel down;
 
-    public JButton btns;
+    private JButton Compile_btn;
+    private JButton View_btn;
     //protected String CodeStr="<html><head></head><body><p>public class HelloWorld{</p><br/><p>public static main(){</p><br/><p>System.out.println(\"Hello World\");</p><p>}<br>}</p> </body></html>";
     protected JLabel Questionlbl;
     private JLabel resultlbl;
@@ -48,10 +49,32 @@ public class BasicWindow extends JFrame
 
         up = new JPanel();
         up.setLayout(new FlowLayout(FlowLayout.LEFT));
-        up.setBackground(Color.WHITE);
+        up.setBackground(Color.GRAY);
         up.setBounds(0,0,1280,50);
+        Compile_btn = new JButton("Compile");
+        Compile_btn.setPreferredSize(new Dimension(140, 30));
+        View_btn = new JButton("View Code");
+        View_btn.setPreferredSize(new Dimension(140, 30));
+        ActionListener upbtnlistener = new ActionListener() { // 按鈕監聽器
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                JButton source = (JButton)e.getSource();
+                if(source==Compile_btn)
+                {
 
-        
+                }
+                else if(source==View_btn)
+                {
+                    new Code();
+                }
+            }
+        };
+        Compile_btn.addActionListener(upbtnlistener);
+        View_btn.addActionListener(upbtnlistener);
+        up.add(Compile_btn);
+        up.add(View_btn);
+
         lefts = new JPanel();
         lefts.setBackground(Color.gray);
         lefts.setPreferredSize(new Dimension(190,1000));
@@ -91,15 +114,11 @@ public class BasicWindow extends JFrame
         resultlbl = new JLabel("Hello World");
         down.add(resultlbl);
 
-        btns = new JButton("implement"); // test
-
         this.add(up);
         this.add(leftScroll);
         this.add(middle);
         this.add(right);
         this.add(down);
-
-        this.up.add(btns);
     }
 
     private void LeftBtnEvent()
