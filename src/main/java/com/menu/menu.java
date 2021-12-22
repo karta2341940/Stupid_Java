@@ -57,7 +57,7 @@ public class menu extends JFrame{
                             {
                                 case "1":
                                     new Q1();
-                                    //new question(1);
+                                    new question(1);
                                     break;
                                 case "2":
                                     new Q2();

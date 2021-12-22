@@ -1,7 +1,7 @@
 package com.IDEscreen;
 import javax.swing.*;
 import java.awt.*;
- 
+
 public class question extends JFrame
 {
     private JLabel questionlbl;

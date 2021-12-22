@@ -1,17 +1,18 @@
 package com.IDEscreen;
 
 import javax.swing.*;
+import javax.swing.event.*;
 import javax.swing.border.*;
-import java.awt.*;
+import java.awt.geom.*;
+import java.awt.*;   
+import java.awt.event.*;
 
 public class MovePanel extends JPanel 
 {
     MovePanel(String selectedStr, Point burnPoint) // 傳入選擇的拼圖與生成位置
     {
-        this.setBounds(burnPoint.x,burnPoint.y,200,30);
-        this.setBackground(Color.white);
-        this.setLayout(new FlowLayout(0));
-        this.setBorder(new LineBorder(Color.BLACK));
+        this.setBounds(burnPoint.x,burnPoint.y,100,100);
+        this.setBackground(Color.ORANGE);
         JTextArea textarea = new JTextArea("");
         JLabel jlabel = new JLabel("");
         textarea.setEditable(true);
@@ -40,6 +41,16 @@ public class MovePanel extends JPanel
                 break;
             case "public_static_void":
                 jlabel.setText("public static void");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
+            case "private_class":
+                jlabel.setText("private class ");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
+            case "protect_class":
+                jlabel.setText("protect class");
                 this.add(jlabel);
                 this.add(textarea);
                 break;
@@ -118,12 +129,16 @@ public class MovePanel extends JPanel
                 this.add(jlabel);
                 this.add(textarea);
                 break;
+            case "import":
+                jlabel.setText("import");
+                this.add(jlabel);
+                this.add(textarea);
+                break;
             
         }
         DragObjectListener listener = new DragObjectListener(); // 拖移物件監聽器
         this.addMouseListener(listener);
         this.addMouseMotionListener(listener);
-        
     }
     /*public void setSelected(boolean flag) {
         selected = flag;

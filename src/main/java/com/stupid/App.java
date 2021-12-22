@@ -3,7 +3,7 @@ import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.compiler.*;
 //import com.Window.*;
-//gura push test 
+
 import com.menu.menu;
 /**
  * Hello world!
@@ -23,8 +23,6 @@ public final class App {
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
-        UIManager.put( "ScrollBar.trackArc", 999 );
-        UIManager.put( "ScrollBar.thumbArc", 999 );
 
         //new compiler();
         UIManager.put( "Button.arc" , 10 ); // 按鈕圓角弧度
