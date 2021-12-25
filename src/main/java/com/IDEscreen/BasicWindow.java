@@ -4,6 +4,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import com.structure.*;
 
 
 public class BasicWindow extends JFrame
@@ -25,10 +26,13 @@ public class BasicWindow extends JFrame
 
     protected ImageIcon icon;
 
-    ArrayList<Object> puzzleAL = new ArrayList<Object>();
+    ArrayList<MovePanel> puzzleAL = new ArrayList<MovePanel>();
+    ArrayList<puzzleStructure> puzzleStructAL = new ArrayList<puzzleStructure>();
 
     private String selectedStr = "";
     private JButton tempButton = null;
+
+    int size = 0;
 
     public BasicWindow()
     {
@@ -62,7 +66,14 @@ public class BasicWindow extends JFrame
                 JButton source = (JButton)e.getSource();
                 if(source==Compile_btn)
                 {
-
+                    puzzleStructure[] temp = new puzzleStructure[puzzleStructAL.size()];
+                    for(int i=0;i<puzzleStructAL.size();i++)
+                    {
+                        puzzleStructAL.get(i).setPosition(new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()), new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()+puzzleAL.get(i).getHeight()));
+                        temp[i] = puzzleStructAL.get(i);
+                    }
+                    puzzle testPuzzle = new puzzle();
+                    testPuzzle.generation(temp);
                 }
                 else if(source==View_btn)
                 {
@@ -94,10 +105,12 @@ public class BasicWindow extends JFrame
             public void mouseReleased(MouseEvent e) { // 滑鼠放開，新增拼圖
                 if(selectedStr != "") // 如果有選擇拼圖
                 {
-                    MovePanel movePanel = new MovePanel(selectedStr, e.getPoint());
+                    puzzleStructure pzs = new puzzleStructure();
+                    puzzleStructAL.add(pzs);
+                    MovePanel movePanel = new MovePanel(selectedStr, e.getPoint(), puzzleStructAL.size()-1, puzzleStructAL);
                     puzzleAL.add(movePanel); // 新增拼圖到ArrayList  
                     middle.add(movePanel);
-                    System.out.println("puzzle amount:" + puzzleAL.size());
+                    System.out.println("puzzle amount:" + puzzleAL.size() + " " + puzzleStructAL.size());
                     middle.revalidate(); // 更新panel
                     middle.repaint();
                 }

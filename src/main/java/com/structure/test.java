@@ -91,6 +91,8 @@ public class test {
             pzs[i]= new puzzleStructure();
         }
         run ();
+        puzzle testPuzzle = new puzzle();
+        testPuzzle.generation(pzs);
     }
     void run ()
     {

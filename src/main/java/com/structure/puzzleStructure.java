@@ -168,4 +168,8 @@ public class puzzleStructure {
      */
     public String varType;
     
+    public void setPosition(position headPosition , position tailPosition){
+        Head = headPosition;
+        Tail = tailPosition;
+    }
 }

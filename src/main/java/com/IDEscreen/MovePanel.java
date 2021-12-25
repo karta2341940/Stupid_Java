@@ -4,10 +4,16 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
+import java.util.ArrayList;
+import com.structure.*;
+
 public class MovePanel extends JPanel 
 {
-    MovePanel(String selectedStr, Point burnPoint) // 傳入選擇的拼圖與生成位置
+    Object[] structure = new Object[6];
+    public MovePanel(String selectedStr, Point burnPoint, int listPOS,ArrayList<puzzleStructure> puzzleStructAL) // 傳入選擇的拼圖與生成位置
     {
+        System.out.println("movepanel:" + puzzleStructAL.size());
+
         this.setBounds(burnPoint.x,burnPoint.y,200,30);
         this.setBackground(Color.white);
         this.setLayout(new FlowLayout(0));
@@ -15,10 +21,19 @@ public class MovePanel extends JPanel
         JTextArea textarea = new JTextArea("");
         JLabel jlabel = new JLabel("");
         textarea.setEditable(true);
+
+        String functionCode = "";
+        position head = new position(this.getX(),this.getY());
+        position tail = new position(this.getX(), this.getY()+this.getHeight());
+        //System.out.println(this.getX() + "  " + (this.getX()+this.getWidth()));
+        String typeStr = "";
+        String nameString = "";
+        String ContentString = "";
         
         switch(selectedStr) // 根據選擇的拼圖更改不同拼圖的差別
         {
             case "for":
+                functionCode = "40";
                 jlabel.setText("for");
                 this.add(jlabel);
                 this.add(textarea);
@@ -34,6 +49,7 @@ public class MovePanel extends JPanel
                 this.add(textarea);
                 break;
             case "public_class":
+                functionCode = "20.1";
                 jlabel.setText("public class");
                 this.add(jlabel);
                 this.add(textarea);
@@ -44,6 +60,7 @@ public class MovePanel extends JPanel
                 this.add(textarea);
                 break;
             case "int":
+                functionCode = "30.1";
                 jlabel.setText("int");
                 this.add(jlabel);
                 this.add(textarea);
@@ -120,6 +137,9 @@ public class MovePanel extends JPanel
                 break;
             
         }
+
+        puzzleStructAL.get(listPOS).set(functionCode, head, tail, typeStr, nameString, textarea.getText());
+
         DragObjectListener listener = new DragObjectListener(); // 拖移物件監聽器
         this.addMouseListener(listener);
         this.addMouseMotionListener(listener);

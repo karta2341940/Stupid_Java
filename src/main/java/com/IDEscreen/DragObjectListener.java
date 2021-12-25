@@ -17,7 +17,6 @@ public class DragObjectListener implements MouseInputListener {
             Point newP = SwingUtilities.convertPoint(jl, e.getPoint(), jl.getParent()); // 轉換座標
             jl.setLocation(jl.getX() + (newP.x - p.x), jl.getY() + (newP.y - p.y)); // 設定物件到新位置
             p = newP; // 更改座標點
-            //System.out.println(jl.getX());
             if(jl.getX()<-150)
             {
                 jl.getParent().remove(jl);
@@ -26,15 +25,17 @@ public class DragObjectListener implements MouseInputListener {
     }
 
     public void mouseReleased(MouseEvent e) 
-    {   
+    {
+
     }
 
     public void mouseEntered(MouseEvent e) {
     }
 
     public void mouseExited(MouseEvent e) {
-        /*Component source = (Component) e.getSource();
-        ((MovePanel)source).setSelected(false);*/
+        Component jl = (Component) e.getSource();
+        
+        //((MovePanel)source).setSelected(false);*/
 
     }
 
