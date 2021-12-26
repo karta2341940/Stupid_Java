@@ -9,26 +9,28 @@ import com.structure.*;
 
 public class MovePanel extends JPanel 
 {
-    Object[] structure = new Object[6];
+    public JTextArea contentTextArea;
+    public JTextArea typeTextArea;
+    public JTextArea nameTextArea;
+    public ArrayList<puzzleStructure> MPpuzzleStructAL;
     public MovePanel(String selectedStr, Point burnPoint, int listPOS,ArrayList<puzzleStructure> puzzleStructAL) // 傳入選擇的拼圖與生成位置
     {
+        MPpuzzleStructAL = puzzleStructAL;
         System.out.println("movepanel:" + puzzleStructAL.size());
 
         this.setBounds(burnPoint.x,burnPoint.y,200,30);
         this.setBackground(Color.white);
         this.setLayout(new FlowLayout(0));
         this.setBorder(new LineBorder(Color.BLACK));
-        JTextArea textarea = new JTextArea("");
         JLabel jlabel = new JLabel("");
-        textarea.setEditable(true);
-
+        contentTextArea = new JTextArea("");
+        typeTextArea = new JTextArea("");
+        nameTextArea = new JTextArea("");
+        contentTextArea.setEditable(true);
+        typeTextArea.setEditable(true);
+        nameTextArea.setEditable(true);
+        
         String functionCode = "";
-        position head = new position(this.getX(),this.getY());
-        position tail = new position(this.getX(), this.getY()+this.getHeight());
-        //System.out.println(this.getX() + "  " + (this.getX()+this.getWidth()));
-        String typeStr = "";
-        String nameString = "";
-        String ContentString = "";
         
         switch(selectedStr) // 根據選擇的拼圖更改不同拼圖的差別
         {
@@ -36,109 +38,121 @@ public class MovePanel extends JPanel
                 functionCode = "40";
                 jlabel.setText("for");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "print":
                 jlabel.setText("print");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "println":
                 jlabel.setText("println");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "public_class":
                 functionCode = "20.1";
                 jlabel.setText("public class");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "public_static_void":
                 jlabel.setText("public static void");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "int":
-                functionCode = "30.1";
+                functionCode = "12";
                 jlabel.setText("int");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "  ":
                 //jlabel.setText("int");
                 //this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "if":
+                functionCode = "50";
                 jlabel.setText("if");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "elseif":
+                functionCode = "70";
                 jlabel.setText("else if");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "else":
+                functionCode = "60";
                 jlabel.setText("else");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break; 
             case "byte":
+                functionCode = "12";
                 jlabel.setText("byte");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "short":
+                functionCode = "12";
                 jlabel.setText("short");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "long":
+                functionCode = "12";
                 jlabel.setText("long");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "char":
+                functionCode = "12";
                 jlabel.setText("char");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "float":
+                functionCode = "12";
                 jlabel.setText("float");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "double":
+                functionCode = "12";
                 jlabel.setText("double");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "switch":
+                functionCode = "80";
                 jlabel.setText("switch");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;    
             case "case":
+                functionCode = "80.1";
                 jlabel.setText("case");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             case "break":
                 jlabel.setText("break");
                 this.add(jlabel);
-                //this.add(textarea);
+                //this.add(contentTextArea);
                 break;
             case "while":
+                functionCode = "90";
                 jlabel.setText("while");
                 this.add(jlabel);
-                this.add(textarea);
+                this.add(contentTextArea);
                 break;
             
         }
 
-        puzzleStructAL.get(listPOS).set(functionCode, head, tail, typeStr, nameString, textarea.getText());
+        puzzleStructAL.get(listPOS).setFunctionCode(functionCode);
 
         DragObjectListener listener = new DragObjectListener(); // 拖移物件監聽器
         this.addMouseListener(listener);

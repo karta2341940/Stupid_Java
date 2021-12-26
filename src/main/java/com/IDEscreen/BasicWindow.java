@@ -65,11 +65,17 @@ public class BasicWindow extends JFrame
             {
                 JButton source = (JButton)e.getSource();
                 if(source==Compile_btn)
-                {
+                { 
                     puzzleStructure[] temp = new puzzleStructure[puzzleStructAL.size()];
                     for(int i=0;i<puzzleStructAL.size();i++)
                     {
-                        puzzleStructAL.get(i).setPosition(new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()), new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()+puzzleAL.get(i).getHeight()));
+                        position head = new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY());
+                        position tail = new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()+puzzleAL.get(i).getHeight());
+                        String type = puzzleAL.get(i).typeTextArea.getText();
+                        String name = puzzleAL.get(i).nameTextArea.getText();
+                        String content = puzzleAL.get(i).contentTextArea.getText();
+                        puzzleStructAL.get(i).set(head, tail, type, name, content);
+                        
                         temp[i] = puzzleStructAL.get(i);
                     }
                     puzzle testPuzzle = new puzzle();
@@ -107,7 +113,8 @@ public class BasicWindow extends JFrame
                 {
                     puzzleStructure pzs = new puzzleStructure();
                     puzzleStructAL.add(pzs);
-                    MovePanel movePanel = new MovePanel(selectedStr, e.getPoint(), puzzleStructAL.size()-1, puzzleStructAL);
+                    System.out.println("index: " + puzzleStructAL.indexOf(pzs));
+                    MovePanel movePanel = new MovePanel(selectedStr, e.getPoint(), puzzleStructAL.indexOf(pzs), puzzleStructAL);
                     puzzleAL.add(movePanel); // 新增拼圖到ArrayList  
                     middle.add(movePanel);
                     System.out.println("puzzle amount:" + puzzleAL.size() + " " + puzzleStructAL.size());
@@ -274,67 +281,6 @@ public class BasicWindow extends JFrame
         {
             buttons[i].addActionListener(btnlistener);
         }
-        /*JButton for_btn = new JButton("for");
-        JButton print_btn = new JButton("print");
-        JButton println_btn = new JButton("println");
-        JButton public_class_btn = new JButton("public class");
-        JButton public_static_void_btn = new JButton("public static void");
-        JButton int_btn = new JButton("int");
-        JButton _btn = new JButton("  ");
-        JButton if_btn = new JButton("if");
-        JButton elseif_btn = new JButton("else if");
-        JButton else_btn = new JButton("else");
-        JButton byte_btn = new JButton("byte");
-        JButton short_btn = new JButton("short");
-        JButton char_btn = new JButton("char");
-        JButton long_btn = new JButton("long");
-        JButton float_btn = new JButton("float");
-        JButton double_btn = new JButton("double");
-        JButton switch_btn = new JButton("switch");
-        JButton case_btn = new JButton("case");
-        JButton break_btn = new JButton("break");
-        JButton while_btn = new JButton("while");
-        lefts.add(public_class_btn);
-        lefts.add(public_static_void_btn);
-        lefts.add(int_btn);
-        lefts.add(for_btn);
-        lefts.add(print_btn);
-        lefts.add(println_btn);
-        lefts.add(_btn);
-        lefts.add(if_btn);
-        lefts.add(elseif_btn);
-        lefts.add(else_btn);
-        lefts.add(byte_btn);
-        lefts.add(short_btn);
-        lefts.add(char_btn);
-        lefts.add(long_btn);
-        lefts.add(float_btn);
-        lefts.add(double_btn);
-        lefts.add(switch_btn);
-        lefts.add(case_btn);
-        lefts.add(break_btn);
-        lefts.add(while_btn);
-        // 按鈕新增監聽器
-        for_btn.addActionListener(btnlistener);
-        print_btn.addActionListener(btnlistener);
-        println_btn.addActionListener(btnlistener);
-        public_class_btn.addActionListener(btnlistener);
-        public_static_void_btn.addActionListener(btnlistener);
-        int_btn.addActionListener(btnlistener);
-        _btn.addActionListener(btnlistener);
-        if_btn.addActionListener(btnlistener);
-        elseif_btn.addActionListener(btnlistener);
-        else_btn.addActionListener(btnlistener);
-        byte_btn.addActionListener(btnlistener);
-        short_btn.addActionListener(btnlistener);
-        char_btn.addActionListener(btnlistener);
-        long_btn.addActionListener(btnlistener);
-        float_btn.addActionListener(btnlistener);
-        double_btn.addActionListener(btnlistener);
-        switch_btn.addActionListener(btnlistener);
-        case_btn.addActionListener(btnlistener);
-        break_btn.addActionListener(btnlistener);
-        while_btn.addActionListener(btnlistener);*/
     }
 //Push test
     protected String Question(int n) // 題目設定
@@ -343,10 +289,10 @@ public class BasicWindow extends JFrame
         switch(n)
         {
             case 1:
-                questionStr = "題目一：請試著做出Hello World";
+                questionStr = "題目一 : 請試著做出Hello World";
                 break;
             case 2:
-                questionStr = "題目二：請試著做出加減法";
+                questionStr = "題目二 : 請試著做出加減法";
                 break;
         }
         return questionStr;
