@@ -1,4 +1,5 @@
 package com.IDEscreen;
+
 import javax.swing.*;
 
 public class Q1 extends BasicWindow

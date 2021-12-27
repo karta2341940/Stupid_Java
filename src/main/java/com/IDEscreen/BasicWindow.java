@@ -43,13 +43,7 @@ public class BasicWindow extends JFrame
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setLayout(null);
-        this.addKeyListener(new KeyAdapter(){ // 拖移時將拼圖改成最上層
-            @Override
-            public void keyReleased(KeyEvent e) 
-            {
-                System.out.println(e.getKeyChar());
-            }
-        });
+        
 
         up = new JPanel();
         up.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -114,7 +108,7 @@ public class BasicWindow extends JFrame
                     puzzleStructure pzs = new puzzleStructure();
                     puzzleStructAL.add(pzs);
                     System.out.println("index: " + puzzleStructAL.indexOf(pzs));
-                    MovePanel movePanel = new MovePanel(selectedStr, e.getPoint(), puzzleStructAL.indexOf(pzs), puzzleStructAL);
+                    MovePanel movePanel = new MovePanel(selectedStr, e.getPoint(), puzzleStructAL.indexOf(pzs), puzzleStructAL, puzzleAL);
                     puzzleAL.add(movePanel); // 新增拼圖到ArrayList  
                     middle.add(movePanel);
                     System.out.println("puzzle amount:" + puzzleAL.size() + " " + puzzleStructAL.size());

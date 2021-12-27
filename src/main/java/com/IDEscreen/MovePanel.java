@@ -13,9 +13,16 @@ public class MovePanel extends JPanel
     public JTextArea typeTextArea;
     public JTextArea nameTextArea;
     public ArrayList<puzzleStructure> MPpuzzleStructAL;
-    public MovePanel(String selectedStr, Point burnPoint, int listPOS,ArrayList<puzzleStructure> puzzleStructAL) // 傳入選擇的拼圖與生成位置
+    public puzzleStructure tempPuzzleStructure;
+    public ArrayList<MovePanel> MPpuzzleAL;
+    public MovePanel tempPuzzle;
+    public MovePanel(String selectedStr, Point burnPoint, int listPOS,ArrayList<puzzleStructure> puzzleStructAL,ArrayList<MovePanel> puzzleAL) // 傳入選擇的拼圖與生成位置
     {
         MPpuzzleStructAL = puzzleStructAL;
+        tempPuzzleStructure = puzzleStructAL.get(listPOS);
+        MPpuzzleAL = puzzleAL;
+        tempPuzzle = this;
+
         System.out.println("movepanel:" + puzzleStructAL.size());
 
         this.setBounds(burnPoint.x,burnPoint.y,200,30);
