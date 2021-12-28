@@ -178,4 +178,7 @@ public class puzzleStructure {
     public void setFunctionCode(String fCode){
         functionCode = fCode;
     }
+    public String getFunctionCode(){
+        return functionCode;
+    }
 }

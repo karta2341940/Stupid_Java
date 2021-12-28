@@ -3,7 +3,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
+import java.util.*;
+
+import com.menu.menu;
 import com.structure.*;
 
 
@@ -21,7 +23,7 @@ public class BasicWindow extends JFrame
     private JButton Compile_btn;
     private JButton View_btn;
     //protected String CodeStr="<html><head></head><body><p>public class HelloWorld{</p><br/><p>public static main(){</p><br/><p>System.out.println(\"Hello World\");</p><p>}<br>}</p> </body></html>";
-    protected JLabel Questionlbl;
+    protected JTextArea QuestionTA;
     private JLabel resultlbl;
 
     protected ImageIcon icon;
@@ -36,14 +38,22 @@ public class BasicWindow extends JFrame
 
     public BasicWindow()
     {
+        JFrame self = this;
         // 設定ide基本視窗
-        this.setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                self.dispose();
+                JFrame j = new menu();
+                j.setVisible(true);
+            }
+       });
+
         this.setResizable(false);
         this.setSize(1280, 720);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setLayout(null);
-        
 
         up = new JPanel();
         up.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -61,13 +71,44 @@ public class BasicWindow extends JFrame
                 if(source==Compile_btn)
                 { 
                     puzzleStructure[] temp = new puzzleStructure[puzzleStructAL.size()];
+                    int[] tempArray = new int[puzzleStructAL.size()];
                     for(int i=0;i<puzzleStructAL.size();i++)
                     {
-                        position head = new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY());
-                        position tail = new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()+puzzleAL.get(i).getHeight());
+                        tempArray[i] = puzzleAL.get(i).getY();
+                    }
+                    Arrays.sort(tempArray);
+
+                    for(int i=0;i<puzzleStructAL.size();i++)
+                    {
+                        position head;
+                        position tail;
+                        if(puzzleAL.get(i).getY()==tempArray[0])
+                        {
+                            head = new position(0,0);
+                            tail = new position(0,puzzleAL.get(i).getHeight());
+                        }
+                        else
+                        {
+                            head = new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY());
+                            tail = new position(puzzleAL.get(i).getX(),puzzleAL.get(i).getY()+puzzleAL.get(i).getHeight());
+                        }
                         String type = puzzleAL.get(i).typeTextArea.getText();
                         String name = puzzleAL.get(i).nameTextArea.getText();
-                        String content = puzzleAL.get(i).contentTextArea.getText();
+                        String content = "";
+                        switch (puzzleStructAL.get(i).getFunctionCode()) {
+                            case "100":
+                                content = "System.out.print(" + puzzleAL.get(i).contentTextArea.getText() + ");";
+                                puzzleStructAL.get(i).setFunctionCode("00");
+                                break;
+                            case "101":
+                                content = "System.out.println(" + puzzleAL.get(i).contentTextArea.getText() + ");";
+                                puzzleStructAL.get(i).setFunctionCode("00");
+                                break;
+                            default:
+                                content = puzzleAL.get(i).contentTextArea.getText();
+                                break;
+                        }
+
                         puzzleStructAL.get(i).set(head, tail, type, name, content);
                         
                         temp[i] = puzzleStructAL.get(i);
@@ -125,7 +166,8 @@ public class BasicWindow extends JFrame
         down = new JPanel();
         down.setBackground(Color.gray);
         down.setBounds(200,545,1060,132);
-        resultlbl = new JLabel("Hello World");
+        down.setLayout(new FlowLayout(FlowLayout.LEFT));
+        resultlbl = new JLabel("");
         down.add(resultlbl);
 
         this.add(up);
@@ -283,7 +325,7 @@ public class BasicWindow extends JFrame
         switch(n)
         {
             case 1:
-                questionStr = "題目一 : 請試著做出Hello World";
+                questionStr = "題目一 : 請試著做出Hello World\n提示 ";
                 break;
             case 2:
                 questionStr = "題目二 : 請試著做出加減法";

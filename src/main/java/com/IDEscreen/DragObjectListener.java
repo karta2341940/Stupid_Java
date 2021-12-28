@@ -15,7 +15,9 @@ public class DragObjectListener implements MouseInputListener {
         if (SwingUtilities.isLeftMouseButton(e)) {
             MovePanel jl = (MovePanel) e.getSource();
             Point newP = SwingUtilities.convertPoint(jl, e.getPoint(), jl.getParent()); // 轉換座標
-            jl.setLocation(jl.getX() + (newP.x - p.x), jl.getY() + (newP.y - p.y)); // 設定物件到新位置
+            int x = jl.getX() + (newP.x-p.x);
+            int y = jl.getY() + (newP.y - p.y);
+            jl.setLocation(x, y); // 設定物件到新位置
             p = newP; // 更改座標點
             System.out.println(jl.MPpuzzleStructAL.indexOf(jl.tempPuzzleStructure));
             if(jl.getX()<-150)
@@ -23,33 +25,13 @@ public class DragObjectListener implements MouseInputListener {
                 jl.MPpuzzleStructAL.remove(jl.MPpuzzleStructAL.indexOf(jl.tempPuzzleStructure));
                 jl.MPpuzzleAL.remove(jl.MPpuzzleAL.indexOf(jl.tempPuzzle));
                 jl.getParent().remove(jl);
-                
             }
         }
     }
-
-    public void mouseReleased(MouseEvent e) 
-    {
-
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
-        
-        //((MovePanel)source).setSelected(false);*/
-
-    }
-
-    public void mouseClicked(MouseEvent e) {
-        /*if (SwingUtilities.isLeftMouseButton(e)) {       
-            if (e.getClickCount() == 2) {
-                Component source = (Component) e.getSource();
-                ((MovePanel)source).setSelected(true);
-            }
-        }*/
-    }
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e) {}
 
     public void mousePressed(MouseEvent e) {
         if (SwingUtilities.isLeftMouseButton(e)) {

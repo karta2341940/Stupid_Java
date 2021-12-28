@@ -5,27 +5,29 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class menu extends JFrame{
+    public JFrame menuframe;
     public menu()
     {
-        this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setSize(1280, 720);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        menuframe = new JFrame();
+        menuframe.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        menuframe.setResizable(false);
+        menuframe.setSize(1280, 720);
+        menuframe.setLocationRelativeTo(null);
+        menuframe.setVisible(true);
         
-        this.setLayout(null);
+        menuframe.setLayout(null);
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
         p2.setLayout(new BoxLayout(p2, BoxLayout.Y_AXIS));
 
-        JLabel title = new JLabel("Lousu Java");
+        JLabel title = new JLabel("Lausu Java");
         title.setFont(new Font("Dialog", 1, 70));
         p1.add(title);
         p2.setBackground(Color.BLACK);
 
         int LevelNum = 25; //共25關
         // title、button、label 陣列 從1開始
-        String[] LevelTitle = {"", "variable", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test"};
+        String[] LevelTitle = {"", "hello world", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test"};
         JButton btnArray[] = new JButton[LevelNum+1];
         JLabel lblArray[] = new JLabel[LevelNum+1];
         // 新增按鈕、標籤迴圈
@@ -65,6 +67,7 @@ public class menu extends JFrame{
                                     new Q3();
                                     break;
                             }
+                            menuframe.setVisible(false);
                         }
                     }
                 );
@@ -87,7 +90,7 @@ public class menu extends JFrame{
         p1.setBounds(0, 50, 1280, 100);
         p2.setBounds(0, 150, 1280, 570);
 
-        this.add(p1);
-        this.add(p2);
+        menuframe.add(p1);
+        menuframe.add(p2);
     }
 }

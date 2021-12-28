@@ -1,7 +1,7 @@
 package com.stupid;
 import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.compiler.*;
+
 //import com.Window.*;
 
 import com.menu.menu;

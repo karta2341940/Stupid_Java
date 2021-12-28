@@ -14,7 +14,7 @@ public class io {
     public io()
     {
     }
-    public void Reader_ ()
+    public String Reader_ ()
     {
         try
         {
@@ -36,6 +36,7 @@ public class io {
         {
             e.printStackTrace();
         }
+        return read_content;
     }
     /**
      * 

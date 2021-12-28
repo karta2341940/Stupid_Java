@@ -30,6 +30,7 @@ public class MovePanel extends JPanel
         this.setLayout(new FlowLayout(0));
         this.setBorder(new LineBorder(Color.BLACK));
         JLabel jlabel = new JLabel("");
+        JLabel jlabel1 = new JLabel("");
         contentTextArea = new JTextArea("");
         typeTextArea = new JTextArea("");
         nameTextArea = new JTextArea("");
@@ -48,14 +49,20 @@ public class MovePanel extends JPanel
                 this.add(contentTextArea);
                 break;
             case "print":
-                jlabel.setText("print");
+                functionCode = "100";
+                jlabel.setText("System.out.print(");
+                jlabel1.setText(")");
                 this.add(jlabel);
                 this.add(contentTextArea);
+                this.add(jlabel1);
                 break;
             case "println":
-                jlabel.setText("println");
+                functionCode = "101";
+                jlabel.setText("System.out.println(");
+                jlabel1.setText(")");
                 this.add(jlabel);
                 this.add(contentTextArea);
+                this.add(jlabel1);
                 break;
             case "public_class":
                 functionCode = "20.1";
@@ -75,6 +82,7 @@ public class MovePanel extends JPanel
                 this.add(contentTextArea);
                 break;
             case "  ":
+                functionCode = "00";
                 //jlabel.setText("int");
                 //this.add(jlabel);
                 this.add(contentTextArea);
